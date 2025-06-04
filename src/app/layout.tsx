@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navigation from "@/components/Navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,25 +18,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="bg-indigo-700 text-white">
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <div className="flex items-center">
-                <a href="/" className="font-bold text-xl">CTA20 Campaign</a>
-              </div>
-              <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-4">
-                  <a href="/about" className="hover:bg-indigo-600 px-3 py-2 rounded-md">About</a>
-                  <a href="/stories" className="hover:bg-indigo-600 px-3 py-2 rounded-md">Stories</a>
-                  <a href="/data" className="hover:bg-indigo-600 px-3 py-2 rounded-md">Data</a>
-                  <a href="/resources" className="hover:bg-indigo-600 px-3 py-2 rounded-md">Resources</a>
-                  <a href="/take-action" className="bg-white text-indigo-700 px-4 py-2 rounded-md font-medium hover:bg-indigo-50">
-                    Take Action
-                  </a>
-                </div>
-              </div>
-            </div>
-          </nav>
+        <header>
+          <Navigation />
         </header>
 
         <main>{children}</main>

@@ -1,10 +1,12 @@
+import React from 'react';
+
 interface StoryCardProps {
-  name: string
-  community: string
-  location: string
-  image?: string
-  story: string
-  date: string
+  name: string;
+  community?: string;
+  location: string;
+  image?: string;
+  story: string;
+  date: string;
 }
 
 export default function StoryCard({
@@ -27,16 +29,14 @@ export default function StoryCard({
         </div>
       )}
       <div className="p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900">{name}</h3>
-            <p className="text-sm text-gray-600">
-              {community} • {location}
-            </p>
-          </div>
-          <span className="text-sm text-gray-500">{date}</span>
+        <h3 className="text-xl font-semibold text-black">{name}</h3>
+        <p className="text-sm text-body">
+          {community && <span>{community} • </span>}{location}
+        </p>
+        <div className="mt-4">
+          <p className="text-body mb-4">{story}</p>
+          <span className="text-sm text-black/75">{date}</span>
         </div>
-        <p className="text-gray-700 mb-4">{story}</p>
         <div className="flex items-center justify-between border-t pt-4">
           <button className="text-indigo-600 hover:text-indigo-500 text-sm font-medium">
             Share Story

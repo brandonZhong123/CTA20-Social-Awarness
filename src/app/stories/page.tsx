@@ -2,28 +2,24 @@ import StoryCard from '@/components/StoryCard'
 
 const stories = [
   {
-    name: "Sarah Cardinal",
-    community: "Métis",
-    location: "Edmonton, AB",
-    image: "/images/stories/sarah.jpg",
-    story: "As a Métis woman living in an urban area, I've experienced firsthand the challenges of accessing culturally appropriate healthcare. While I'm fortunate to have a family doctor now, it took years to find one who understood and respected our traditional healing practices alongside modern medicine.",
-    date: "March 15, 2024"
+    name: "Brian Sinclair",
+    location: "Manitoba",
+    story: "Brian, an off-reserve Indigenous man, tragically passed away at age 45 after waiting in the emergency room for over 34 hours. Despite having a referral from his community clinic for a treatable blocked catheter condition, he was never registered. Staff made incorrect assumptions about his status, believing he was intoxicated or homeless.",
+    date: "2008"
   },
   {
-    name: "David Akuluk",
+    name: "November Kelly",
+    community: "Ojibway",
+    location: "OniGaming First Nation",
+    story: "A 25-year-old mother who died after experiencing ongoing abdominal pain following a car accident. Despite multiple visits to hospitals in Thunder Bay and Fort Frances, her symptoms were dismissed with only prescriptions offered. Her condition worsened over four months until she collapsed during a family trip. She passed away at St. Boniface hospital from a severe infection caused by an untreated hole in her bowel.",
+    date: "Recent"
+  },
+  {
+    name: "Anonymous",
     community: "Inuit",
-    location: "Ottawa, ON",
-    image: "/images/stories/david.jpg",
-    story: "Moving from Nunavut to Ottawa for better healthcare access was a difficult decision. While the medical facilities here are more advanced, the lack of cultural understanding and language barriers make it challenging to receive the care I need.",
-    date: "March 10, 2024"
-  },
-  {
-    name: "Emily Johnston",
-    community: "First Nations",
-    location: "Vancouver, BC",
-    image: "/images/stories/emily.jpg",
-    story: "Living off-reserve means I often fall through the cracks of healthcare coverage. I've had to advocate strongly for myself to receive the same level of care that others take for granted. We need a system that recognizes and supports all Indigenous peoples, regardless of where they live.",
-    date: "March 5, 2024"
+    location: "Nunavut",
+    story: "As someone living in a remote community, I have to travel over 1500 kilometers to access basic healthcare services. This distance not only creates a significant barrier to regular check-ups but also means being separated from my family and community during medical treatments.",
+    date: "2024"
   }
 ]
 

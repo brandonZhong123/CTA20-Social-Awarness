@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import CircularProgress from '@/components/CircularProgress'
 
 export default function Home() {
   return (
@@ -40,16 +41,22 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">The Current Reality</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <div className="text-4xl font-bold text-indigo-600 mb-2">47%</div>
-              <p className="text-body">of off-reserve Indigenous peoples report difficulty accessing healthcare services</p>
+              <div className="flex justify-center mb-4">
+                <CircularProgress percentage={86} color="#4F46E5" />
+              </div>
+              <p className="text-body">of Indigenous people living off-reserve say supporting traditional healthcare practices is very important</p>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <div className="text-4xl font-bold text-indigo-600 mb-2">3.5x</div>
-              <p className="text-body">higher rate of chronic health conditions compared to non-Indigenous populations</p>
+              <div className="flex justify-center mb-4">
+                <CircularProgress percentage={67} color="#4F46E5" />
+              </div>
+              <p className="text-body">reported their health concerns were minimized when seeking care</p>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <div className="text-4xl font-bold text-indigo-600 mb-2">60%</div>
-              <p className="text-body">report experiencing discrimination in healthcare settings</p>
+              <div className="flex justify-center mb-4">
+                <CircularProgress percentage={47} color="#4F46E5" />
+              </div>
+              <p className="text-body">of First Nations people living off-reserve need mental health care, with most needs unmet</p>
             </div>
           </div>
         </div>
