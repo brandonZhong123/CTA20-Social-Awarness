@@ -1,0 +1,51 @@
+interface StoryCardProps {
+  name: string
+  community: string
+  location: string
+  image?: string
+  story: string
+  date: string
+}
+
+export default function StoryCard({
+  name,
+  community,
+  location,
+  image,
+  story,
+  date
+}: StoryCardProps) {
+  return (
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      {image && (
+        <div className="relative h-48 w-full">
+          <img
+            src={image}
+            alt={`${name}'s story`}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h3 className="text-xl font-semibold text-gray-900">{name}</h3>
+            <p className="text-sm text-gray-600">
+              {community} • {location}
+            </p>
+          </div>
+          <span className="text-sm text-gray-500">{date}</span>
+        </div>
+        <p className="text-gray-700 mb-4">{story}</p>
+        <div className="flex items-center justify-between border-t pt-4">
+          <button className="text-indigo-600 hover:text-indigo-500 text-sm font-medium">
+            Share Story
+          </button>
+          <button className="text-indigo-600 hover:text-indigo-500 text-sm font-medium">
+            Read More
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+} 
