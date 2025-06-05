@@ -1,4 +1,9 @@
+'use client';
+
 import StoryCard from '@/components/StoryCard'
+import AnimatedCard from '@/components/AnimatedCard'
+import AnimatedHeading from '@/components/AnimatedHeading'
+import { motion } from 'framer-motion'
 
 const stories = [
   {
@@ -15,11 +20,11 @@ const stories = [
     date: "Recent"
   },
   {
-    name: "Anonymous",
-    community: "Inuit",
-    location: "Nunavut",
-    story: "As someone living in a remote community, I have to travel over 1500 kilometers to access basic healthcare services. This distance not only creates a significant barrier to regular check-ups but also means being separated from my family and community during medical treatments.",
-    date: "2024"
+    name: "Joyce Echaquan",
+    community: "Atikamekw",
+    location: "Manawan",
+    story: "Joyce, a 37-year-old mother of seven, live-streamed her final moments in a Joliette hospital where she endured racist taunts from healthcare staff while crying for help. Despite her clear distress and history of heart problems, her concerns were dismissed. She passed away after being given medication she had explicitly warned she was allergic to.",
+    date: "2020"
   }
 ]
 
@@ -27,53 +32,99 @@ export default function StoriesPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-black mb-4">Our Stories</h1>
-          <p className="text-lg text-body max-w-3xl mx-auto">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <AnimatedHeading 
+            text="Our Stories" 
+            className="text-4xl font-bold text-black mb-4"
+          />
+          <motion.p 
+            className="text-lg text-body max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             Real experiences from Indigenous peoples across Canada highlighting the importance of
             equitable healthcare access and the impact of current disparities.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {stories.map((story) => (
-            <StoryCard key={story.name} {...story} />
+          {stories.map((story, index) => (
+            <AnimatedCard key={story.name} delay={index * 0.2}>
+              <StoryCard {...story} />
+            </AnimatedCard>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <h2 className="text-2xl font-semibold text-black mb-4">Share Your Story</h2>
-          <p className="text-body mb-6">
+        <motion.div 
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          <AnimatedHeading 
+            text="Share Your Story" 
+            className="text-2xl font-semibold text-black mb-4"
+          />
+          <motion.p 
+            className="text-body mb-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+          >
             Your experience matters. Help us advocate for change by sharing your healthcare story.
-          </p>
-          <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors">
+          </motion.p>
+          <motion.button 
+            className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Submit Your Story
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
-        <div className="mt-16 bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-2xl font-semibold text-black mb-4">Why Stories Matter</h2>
+        <motion.div 
+          className="mt-16 bg-white rounded-lg shadow-lg p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <AnimatedHeading 
+            text="Why Stories Matter" 
+            className="text-2xl font-semibold text-black mb-4"
+          />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-medium text-black mb-2">Raise Awareness</h3>
-              <p className="text-body">
-                Personal stories help others understand the real impact of healthcare disparities on Indigenous communities.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium text-black mb-2">Drive Change</h3>
-              <p className="text-body">
-                Your experiences can influence policy makers and healthcare providers to implement needed changes.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium text-black mb-2">Build Community</h3>
-              <p className="text-body">
-                Sharing stories helps connect people with similar experiences and creates a stronger voice for change.
-              </p>
-            </div>
+            {[
+              {
+                title: "Raise Awareness",
+                description: "Personal stories help others understand the real impact of healthcare disparities on Indigenous communities."
+              },
+              {
+                title: "Drive Change",
+                description: "Your experiences can influence policy makers and healthcare providers to implement needed changes."
+              },
+              {
+                title: "Build Community",
+                description: "Sharing stories helps connect people with similar experiences and creates a stronger voice for change."
+              }
+            ].map((item, index) => (
+              <AnimatedCard key={item.title} delay={index * 0.2}>
+                <div className="h-full">
+                  <h3 className="text-lg font-medium text-black mb-2">{item.title}</h3>
+                  <p className="text-body">{item.description}</p>
+                </div>
+              </AnimatedCard>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )

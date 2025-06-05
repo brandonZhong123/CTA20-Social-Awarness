@@ -25,6 +25,24 @@
     --ring: 243 75% 59%;
     --radius: 0.75rem;
   }
+
+  a {
+    text-decoration: none !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button, a {
+    outline: none !important;
+  }
+
+  button:focus, a:focus {
+    outline: none !important;
+  }
+
+  /* Remove blue highlight on mobile tap */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @layer base {
@@ -110,4 +128,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Remove focus outline for mouse users, but keep it for keyboard navigation */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Style focus-visible for keyboard users */
+:focus-visible {
+  outline: 2px solid #E5E7EB;
+  outline-offset: 2px;
 }
