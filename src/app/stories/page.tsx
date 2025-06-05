@@ -10,28 +10,31 @@ const stories = [
     name: "Brian Sinclair",
     location: "Manitoba",
     story: "Brian, an off-reserve Indigenous man, tragically passed away at age 45 after waiting in the emergency room for over 34 hours. Despite having a referral from his community clinic for a treatable blocked catheter condition, he was never registered. Staff made incorrect assumptions about his status, believing he was intoxicated or homeless.",
-    date: "2008"
+    date: "2008",
+    image: "/brian-sinclair.png"
   },
   {
     name: "November Kelly",
     community: "Ojibway",
     location: "OniGaming First Nation",
     story: "A 25-year-old mother who died after experiencing ongoing abdominal pain following a car accident. Despite multiple visits to hospitals in Thunder Bay and Fort Frances, her symptoms were dismissed with only prescriptions offered. Her condition worsened over four months until she collapsed during a family trip. She passed away at St. Boniface hospital from a severe infection caused by an untreated hole in her bowel.",
-    date: "Recent"
+    date: "Recent",
+    image: "/november-kelly.png"
   },
   {
     name: "Joyce Echaquan",
     community: "Atikamekw",
     location: "Manawan",
     story: "Joyce, a 37-year-old mother of seven, live-streamed her final moments in a Joliette hospital where she endured racist taunts from healthcare staff while crying for help. Despite her clear distress and history of heart problems, her concerns were dismissed. She passed away after being given medication she had explicitly warned she was allergic to.",
-    date: "2020"
+    date: "2020",
+    image: "/joyce_echaquan.png"
   }
 ]
 
 export default function StoriesPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: -20 }}
@@ -39,7 +42,7 @@ export default function StoriesPage() {
           transition={{ duration: 0.6 }}
         >
           <AnimatedHeading 
-            text="Our Stories" 
+            text="Stories" 
             className="text-4xl font-bold text-black mb-4"
           />
           <motion.p 
@@ -53,7 +56,7 @@ export default function StoriesPage() {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="space-y-8">
           {stories.map((story, index) => (
             <AnimatedCard key={story.name} delay={index * 0.2}>
               <StoryCard {...story} />
@@ -62,7 +65,7 @@ export default function StoriesPage() {
         </div>
 
         <motion.div 
-          className="mt-12 text-center"
+          className="mt-16 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -101,7 +104,7 @@ export default function StoriesPage() {
             text="Why Stories Matter" 
             className="text-2xl font-semibold text-black mb-4"
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-6">
             {[
               {
                 title: "Raise Awareness",
@@ -117,7 +120,7 @@ export default function StoriesPage() {
               }
             ].map((item, index) => (
               <AnimatedCard key={item.title} delay={index * 0.2}>
-                <div className="h-full">
+                <div className="h-full p-6 bg-gray-50 rounded-lg">
                   <h3 className="text-lg font-medium text-black mb-2">{item.title}</h3>
                   <p className="text-body">{item.description}</p>
                 </div>
