@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface StoryCardProps {
   name: string;
@@ -10,6 +11,7 @@ interface StoryCardProps {
   image?: string;
   story: string;
   date: string;
+  readMoreLink?: string;
 }
 
 export default function StoryCard({
@@ -18,7 +20,8 @@ export default function StoryCard({
   location,
   image,
   story,
-  date
+  date,
+  readMoreLink = '#'
 }: StoryCardProps) {
   // Custom object-position for each image to ensure faces are visible
   const getImagePosition = (imageName: string) => {
@@ -34,9 +37,78 @@ export default function StoryCard({
     }
   };
 
+  const buttonMotion = {
+    whileHover: { scale: 1.05, x: 5 },
+    whileTap: { scale: 0.95 },
+    transition: { type: "spring", stiffness: 400 }
+  };
+
+  const buttonClass = "bg-indigo-50 text-indigo-600 px-6 py-2 rounded-full text-sm font-medium flex items-center hover:bg-indigo-100 cursor-pointer no-underline inline-block";
+
+  const ButtonIcon = () => (
+    <motion.svg 
+      className="w-4 h-4 ml-2" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke="currentColor"
+      initial={{ x: 0 }}
+      whileHover={{ x: 3 }}
+      transition={{ duration: 0.2 }}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+    </motion.svg>
+  );
+
+  const renderButton = () => {
+    if (readMoreLink.startsWith('http')) {
+      return (
+        <div className="relative inline-block">
+          <a
+            href={readMoreLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ cursor: 'pointer' }}
+            className="absolute inset-0 w-full h-full z-10"
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open(readMoreLink, '_blank', 'noopener,noreferrer');
+            }}
+          />
+          <motion.div
+            className={buttonClass}
+            whileHover={{ scale: 1.05, x: 5 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
+            Read full story
+            <ButtonIcon />
+          </motion.div>
+        </div>
+      );
+    }
+
+    return (
+      <Link 
+        href={readMoreLink} 
+        style={{ cursor: 'pointer' }}
+        className="inline-block"
+      >
+        <motion.div
+          className={buttonClass}
+          whileHover={{ scale: 1.05, x: 5 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400 }}
+        >
+          Read full story
+          <ButtonIcon />
+        </motion.div>
+      </Link>
+    );
+  };
+
   return (
     <motion.div 
-      className="bg-white rounded-lg shadow-lg overflow-hidden relative cursor-pointer"
+      className="bg-white rounded-lg shadow-lg overflow-hidden relative"
       whileHover={{ 
         scale: 1.02,
         boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
@@ -125,28 +197,10 @@ export default function StoryCard({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.3 }}
           >
-            <motion.button
-              className="bg-indigo-50 text-indigo-600 px-6 py-2 rounded-full text-sm font-medium flex items-center hover:bg-indigo-100"
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              Read full story
-              <motion.svg 
-                className="w-4 h-4 ml-2" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-                initial={{ x: 0 }}
-                whileHover={{ x: 3 }}
-                transition={{ duration: 0.2 }}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </motion.svg>
-            </motion.button>
+            {renderButton()}
           </motion.div>
         </div>
       </div>
     </motion.div>
-  )
+  );
 } 
