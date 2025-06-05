@@ -4,6 +4,7 @@ import StoryCard from '@/components/StoryCard'
 import AnimatedCard from '@/components/AnimatedCard'
 import AnimatedHeading from '@/components/AnimatedHeading'
 import { motion } from 'framer-motion'
+import Link from 'next/link';
 
 const stories = [
   {
@@ -11,7 +12,8 @@ const stories = [
     location: "Manitoba",
     story: "Brian, an off-reserve Indigenous man, tragically passed away at age 45 after waiting in the emergency room for over 34 hours. Despite having a referral from his community clinic for a treatable blocked catheter condition, he was never registered. Staff made incorrect assumptions about his status, believing he was intoxicated or homeless.",
     date: "2008",
-    image: "/brian-sinclair.png"
+    image: "/brian-sinclair.png",
+    readMoreLink: "https://www.cbc.ca/news/canada/manitoba/winnipeg-brian-sinclair-report-1.4295996 "
   },
   {
     name: "November Kelly",
@@ -19,7 +21,8 @@ const stories = [
     location: "OniGaming First Nation",
     story: "A 25-year-old mother who died after experiencing ongoing abdominal pain following a car accident. Despite multiple visits to hospitals in Thunder Bay and Fort Frances, her symptoms were dismissed with only prescriptions offered. Her condition worsened over four months until she collapsed during a family trip. She passed away at St. Boniface hospital from a severe infection caused by an untreated hole in her bowel.",
     date: "Recent",
-    image: "/november-kelly.png"
+    image: "/november-kelly.png",
+    readMoreLink: "https://globalnews.ca/news/10170728/it-was-unnecessary-death-of-indigenous-mother-sparks-bias-concerns-in-ontario-healthcare/"
   },
   {
     name: "Joyce Echaquan",
@@ -27,7 +30,8 @@ const stories = [
     location: "Manawan",
     story: "Joyce, a 37-year-old mother of seven, live-streamed her final moments in a Joliette hospital where she endured racist taunts from healthcare staff while crying for help. Despite her clear distress and history of heart problems, her concerns were dismissed. She passed away after being given medication she had explicitly warned she was allergic to.",
     date: "2020",
-    image: "/joyce_echaquan.png"
+    image: "/joyce_echaquan.png",
+    readMoreLink: "https://www.cbc.ca/news/canada/montreal/joyce-echaquan-systemic-racism-quebec-government-1.6196038"
   }
 ]
 
@@ -84,13 +88,15 @@ export default function StoriesPage() {
           >
             Your experience matters. Help us advocate for change by sharing your healthcare story.
           </motion.p>
-          <motion.button 
-            className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Submit Your Story
-          </motion.button>
+          <Link href="/share-story">
+            <motion.div
+              className="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Submit Your Story
+            </motion.div>
+          </Link>
         </motion.div>
 
         <motion.div 
