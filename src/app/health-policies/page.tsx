@@ -47,17 +47,27 @@ export default function HealthPoliciesPage() {
             className="text-5xl font-bold text-indigo-900 mb-6"
           />
           <motion.p 
-            className="text-xl text-indigo-700 max-w-3xl mx-auto font-medium"
+            className="text-xl text-indigo-700 max-w-3xl mx-auto font-medium mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
             Key policies and legislation that shape healthcare access and delivery for Indigenous peoples in Canada.
           </motion.p>
+          <motion.div
+            className="bg-white/50 backdrop-blur-sm rounded-xl p-6 max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <p className="text-indigo-900/80 leading-relaxed">
+              Canada's healthcare is divided into 15 separate systems, each with its own jurisdiction: one for each province and territory, the federally funded Non-Insured Health Benefits (NIHB) program for First Nations and Inuit, and the Métis Programs via Indigenous Services Canada. This complex structure often leads to confusion over service eligibility and responsibility, causing delays and barriers in accessing care. While provinces manage insured health services, the federal government provides supplementary services, creating a dual system that can be challenging to navigate.
+            </p>
+          </motion.div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {policies.map((policy, index) => (
+          {policies.slice(0, -1).map((policy, index) => (
             <motion.div
               key={policy.title}
               initial={{ opacity: 0, y: 20 }}
@@ -73,6 +83,21 @@ export default function HealthPoliciesPage() {
               />
             </motion.div>
           ))}
+          {/* Last card centered */}
+          <motion.div
+            key={policies[policies.length - 1].title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: (policies.length - 1) * 0.1 }}
+            className="lg:col-span-2 lg:w-1/2 lg:mx-auto"
+          >
+            <ExpandableCard
+              title={policies[policies.length - 1].title}
+              summary={policies[policies.length - 1].summary}
+              fullContent={policies[policies.length - 1].fullContent}
+              className="bg-gradient-to-br from-white to-indigo-50 hover:shadow-xl transition-shadow duration-300"
+            />
+          </motion.div>
         </div>
 
         <motion.div
