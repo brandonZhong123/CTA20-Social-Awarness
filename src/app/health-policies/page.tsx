@@ -1,129 +1,77 @@
 'use client';
 
-import AnimatedSection from '@/components/AnimatedSection';
+import AnimatedHeading from '@/components/AnimatedHeading';
+import ExpandableCard from '@/components/ExpandableCard';
 import { motion } from 'framer-motion';
 
+const policies = [
+  {
+    title: "Indigenous Healthcare Rights",
+    summary: "Constitutional and treaty rights that guarantee access to healthcare services for Indigenous peoples in Canada.",
+    fullContent: "Indigenous peoples in Canada have specific healthcare rights protected under Section 35 of the Constitution Act, 1982, and various treaties. These rights include access to non-insured health benefits (NIHB) program, which covers prescription drugs, dental care, vision care, medical supplies and equipment, mental health counselling, and medical transportation. The federal government has a fiduciary responsibility to ensure these services are provided in a way that respects Indigenous cultural practices and traditions. Recent court decisions have further reinforced these rights and the government's obligations to provide equitable healthcare access."
+  },
+  {
+    title: "Truth and Reconciliation Commission's Health Calls to Action",
+    summary: "Specific recommendations for addressing Indigenous health inequities and improving healthcare access.",
+    fullContent: "The Truth and Reconciliation Commission's Calls to Action include several health-related recommendations (Calls 18-24). These calls demand the recognition of Indigenous healing practices, increased Indigenous healthcare professionals, cultural competency training for healthcare workers, and measurable goals for closing gaps in health outcomes. They specifically call for sustainable funding for Indigenous healing centers and the integration of Indigenous healing practices when requested by Indigenous patients. The calls also emphasize the importance of addressing the distinct health needs of Métis, Inuit, and off-reserve Aboriginal peoples."
+  },
+  {
+    title: "Cultural Safety and Humility Framework",
+    summary: "Guidelines for healthcare providers to deliver culturally safe and respectful care to Indigenous patients.",
+    fullContent: "The Cultural Safety and Humility Framework is a comprehensive approach to healthcare delivery that aims to create an environment free of racism and discrimination. It requires healthcare providers to examine their own biases, understand the historical context of Indigenous health inequities, and adapt their practices to respect Indigenous cultural values and traditions. The framework emphasizes the importance of Indigenous leadership in healthcare decision-making and the need for ongoing education and training for healthcare providers. Key elements include relationship-building, recognition of Indigenous knowledge systems, and commitment to continuous learning and improvement."
+  },
+  {
+    title: "Indigenous Health Legislation",
+    summary: "Federal and provincial laws governing Indigenous healthcare rights and service delivery.",
+    fullContent: "Recent legislative developments include the United Nations Declaration on the Rights of Indigenous Peoples Act (UNDRIP) and its implications for healthcare. This legislation requires governments to consult and cooperate with Indigenous peoples in developing and implementing health policies and programs. It also recognizes Indigenous peoples' right to maintain their traditional medicines and health practices. Provincial legislation varies but generally includes requirements for cultural safety training, Indigenous representation in health authorities, and protection against discrimination in healthcare settings."
+  },
+  {
+    title: "Healthcare Funding Policies",
+    summary: "Policies governing the allocation and distribution of healthcare resources to Indigenous communities.",
+    fullContent: "Healthcare funding for Indigenous communities involves complex arrangements between federal, provincial, and Indigenous governments. The Non-Insured Health Benefits (NIHB) Program provides coverage for a range of health services not covered by provincial/territorial health insurance. Recent policy changes have focused on increasing flexibility in funding arrangements, allowing Indigenous communities more control over healthcare spending. This includes the implementation of block funding agreements and the creation of Indigenous-led health authorities. The policies also address specific challenges such as medical transportation in remote communities and access to specialized services."
+  }
+];
+
 export default function HealthPoliciesPage() {
-  const legalFrameworks = [
-    {
-      title: "United Nations Declaration on the Rights of Indigenous Peoples",
-      description: "A set of international standards providing a framework for Indigenous well-being and reconciliation, though not directly binding law.",
-      icon: "📜"
-    },
-    {
-      title: "International Covenant on Economic, Social and Cultural Rights (ICESCR)",
-      description: "A binding international treaty emphasizing comprehensive commitment to health, promoting a proactive and holistic approach to well-being.",
-      icon: "⚖️"
-    },
-    {
-      title: "Canada Health Act (1984)",
-      description: "Federal legislation that notably does not mention Indigenous peoples, reaffirming provincial jurisdiction where the federal government is only responsible for funding.",
-      icon: "🏛️"
-    }
-  ];
-
-  const systemicIssues = [
-    {
-      title: "Jurisdictional Complexity",
-      description: "Healthcare is divided into 15 separate systems, leading to confusion over service eligibility and responsibility.",
-      impact: "Delays and barriers in accessing care"
-    },
-    {
-      title: "Constitutional Gaps",
-      description: "Since the 1960s implementation of medicare, Indigenous healthcare has never appeared in federal Canadian Law.",
-      impact: "Lack of clear legal framework for Indigenous healthcare rights"
-    },
-    {
-      title: "Administrative Barriers",
-      description: "Provinces manage insured health services while federal government provides supplementary services through NIHB program.",
-      impact: "Complex and disjointed system for Indigenous people"
-    }
-  ];
-
-  const racismImpacts = [
-    "Stress from discriminatory encounters",
-    "Denial of appropriate health services",
-    "Internalized stigma and discrimination",
-    "Mental strain from anticipating negative treatment",
-    "Chronic stress and strained social experiences"
-  ];
-
   return (
-    <div className="min-h-screen bg-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Health Policies & Systemic Barriers</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Understanding the legal framework and systemic racism that affects Indigenous healthcare access in Canada.
-          </p>
-        </AnimatedSection>
+    <div className="min-h-screen bg-gray-50 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <AnimatedHeading 
+            text="Health Policies" 
+            className="text-4xl font-bold text-gray-900 mb-4"
+          />
+          <motion.p 
+            className="text-lg text-gray-600 max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Key policies and legislation that shape healthcare access and delivery for Indigenous peoples in Canada.
+          </motion.p>
+        </motion.div>
 
-        {/* Legal Frameworks Section */}
-        <AnimatedSection className="mb-16" delay={0.2}>
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Legal Framework</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {legalFrameworks.map((framework, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-50 rounded-lg p-6"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="text-4xl mb-4">{framework.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{framework.title}</h3>
-                <p className="text-gray-600">{framework.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </AnimatedSection>
-
-        {/* Systemic Issues Section */}
-        <AnimatedSection className="mb-16" delay={0.4}>
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Systemic Barriers</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {systemicIssues.map((issue, index) => (
-              <motion.div
-                key={index}
-                className="bg-indigo-50 rounded-lg p-6"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{issue.title}</h3>
-                <p className="text-gray-600 mb-4">{issue.description}</p>
-                <div className="bg-white rounded p-3">
-                  <p className="text-sm text-indigo-600 font-medium">Impact: {issue.impact}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </AnimatedSection>
-
-        {/* Systemic Racism Section */}
-        <AnimatedSection className="bg-gray-50 rounded-lg p-8" delay={0.6}>
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Impact of Systemic Racism</h2>
-          <p className="text-gray-600 mb-6">
-            Systemic racism extends beyond individual acts of discrimination during medical treatment - it is embedded in the very structure of the Canadian health system.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {racismImpacts.map((impact, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-lg p-4 shadow-sm"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <svg className="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <p className="ml-3 text-gray-600">{impact}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </AnimatedSection>
+        <div className="space-y-6">
+          {policies.map((policy, index) => (
+            <motion.div
+              key={policy.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <ExpandableCard
+                title={policy.title}
+                summary={policy.summary}
+                fullContent={policy.fullContent}
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
