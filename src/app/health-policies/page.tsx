@@ -34,20 +34,20 @@ const policies = [
 
 export default function HealthPoliciesPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white py-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <AnimatedHeading 
             text="Health Policies" 
-            className="text-4xl font-bold text-gray-900 mb-4"
+            className="text-5xl font-bold text-indigo-900 mb-6"
           />
           <motion.p 
-            className="text-lg text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-indigo-700 max-w-3xl mx-auto font-medium"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -56,22 +56,41 @@ export default function HealthPoliciesPage() {
           </motion.p>
         </motion.div>
 
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {policies.map((policy, index) => (
             <motion.div
               key={policy.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
+              className="lg:even:translate-y-12"
             >
               <ExpandableCard
                 title={policy.title}
                 summary={policy.summary}
                 fullContent={policy.fullContent}
+                className="bg-gradient-to-br from-white to-indigo-50 hover:shadow-xl transition-shadow duration-300"
               />
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          className="mt-20 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          <div className="bg-indigo-100 rounded-xl p-8 max-w-3xl mx-auto">
+            <h3 className="text-xl font-semibold text-indigo-900 mb-4">
+              Understanding Healthcare Policies
+            </h3>
+            <p className="text-indigo-700">
+              These policies form the foundation of Indigenous healthcare rights and services in Canada. 
+              They represent ongoing efforts to address historical inequities and ensure culturally appropriate care.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
