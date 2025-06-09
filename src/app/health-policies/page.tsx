@@ -54,7 +54,6 @@ export default function HealthPoliciesPage() {
           >
             Understanding the complex history and current state of Indigenous healthcare policies in Canada
           </motion.p>
-          
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

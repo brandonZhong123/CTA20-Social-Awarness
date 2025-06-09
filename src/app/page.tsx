@@ -2,60 +2,123 @@
 
 import Link from 'next/link'
 import CircularProgress from '@/components/CircularProgress'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import AnimatedCard from '@/components/AnimatedCard'
+import { useRef, useState } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
+  const heroRef = useRef(null);
+  const [imageError, setImageError] = useState<string | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const overlayColor = useTransform(
+    scrollYProgress,
+    [0, 0.8],
+    ["rgba(49, 46, 129, 0.6)", "rgba(255, 255, 255, 1)"]
+  );
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-indigo-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="relative z-10 lg:w-2/3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
-              Equal Healthcare Access for All Indigenous Peoples
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-indigo-200">
-              Join our campaign to support Call to Action 20 and help ensure equitable healthcare access for Métis, Inuit, and off-reserve Indigenous peoples across Canada.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link 
-                  href="/take-action"
-                  className="inline-block bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors"
-                >
-                  Take Action Now
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link
-                  href="/learn-more"
-                  className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-900 transition-colors"
-                >
-                  Learn More
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-        <div className="absolute bottom-0 right-0 w-full lg:w-1/2 h-full opacity-10">
-          {/* Background pattern or image can be added here */}
+      <section className="relative h-screen" ref={heroRef}>
+        <motion.div
+          className="absolute inset-0 w-full h-full"
+          style={{ y }}
+        >
+          <div className="relative w-full h-full">
+            {imageError && (
+              <div className="absolute inset-0 flex items-center justify-center text-red-500 bg-indigo-50/50 z-10">
+                Error loading image: {imageError}
+              </div>
+            )}
+            <motion.div
+              className="absolute inset-0"
+              style={{ opacity }}
+            >
+              <Image
+                src={'/healthcarehero.png'}
+                alt="Healthcare Hero"
+                fill
+                sizes="100vw"
+                quality={100}
+                priority
+                className="object-cover object-center"
+                onError={() => {
+                  console.error('Error loading image');
+                  setImageError('Failed to load image');
+                }}
+                onLoad={() => {
+                  console.log('Image loaded successfully');
+                  setImageError(null);
+                }}
+              />
+            </motion.div>
+            <motion.div 
+              className="absolute inset-0" 
+              style={{ backgroundColor: overlayColor }}
+            />
+          </div>
+        </motion.div>
+        <div className="relative h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div 
+              className="relative z-10 lg:w-2/3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h1 
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+                style={{ color: useTransform(scrollYProgress, [0, 0.8], ["#ffffff", "#1e1b4b"]) }}
+              >
+                Equal Healthcare Access for All Indigenous Peoples
+              </motion.h1>
+              <motion.p 
+                className="text-xl md:text-2xl mb-8"
+                style={{ color: useTransform(scrollYProgress, [0, 0.8], ["rgb(199, 210, 254)", "#4338ca"]) }}
+              >
+                Join our campaign to support Call to Action 20 and help ensure equitable healthcare access for Métis, Inuit, and off-reserve Indigenous peoples across Canada.
+              </motion.p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link 
+                    href="/take-action"
+                    className="inline-block bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors"
+                  >
+                    Take Action Now
+                  </Link>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link
+                    href="/learn-more"
+                    className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-900 transition-colors"
+                  >
+                    Learn More
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
+      {/* Spacer to prevent overlap */}
+      <div className="h-[15vh]"></div>
+
       {/* Key Statistics Section */}
-      <section className="py-16 bg-white">
+      <section className="bg-white pt-40 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
-            className="text-3xl font-bold text-center mb-12"
+            className="text-3xl font-bold text-center mb-16 text-indigo-900"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-250px" }}
           >
             The Current Reality
           </motion.h2>

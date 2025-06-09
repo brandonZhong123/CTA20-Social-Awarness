@@ -47,8 +47,8 @@ This website is dedicated to raising awareness about Call to Action 20 from the 
    ```
 
 4. Run the development server:
-   ```bash
-   npm run dev
+```bash
+npm run dev
    ```
 
 ## Contributing
