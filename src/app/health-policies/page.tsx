@@ -1,6 +1,5 @@
 'use client';
 
-import AnimatedHeading from '@/components/AnimatedHeading';
 import ExpandableCard from '@/components/ExpandableCard';
 import { motion } from 'framer-motion';
 
@@ -34,27 +33,16 @@ const policies = [
 
 export default function HealthPoliciesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white py-12">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <AnimatedHeading 
-            text="Health Policies" 
-            className="text-5xl font-bold text-indigo-900 mb-6"
-          />
-          <motion.p 
-            className="text-xl text-indigo-700 max-w-3xl mx-auto font-medium mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            Health Policies
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium mb-8">
             Understanding the complex history and current state of Indigenous healthcare policies in Canada
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {policies.slice(0, -1).map((policy, index) => (
@@ -69,7 +57,7 @@ export default function HealthPoliciesPage() {
                 title={policy.title}
                 summary={policy.summary}
                 fullContent={policy.fullContent}
-                className="bg-gradient-to-br from-white to-indigo-50 hover:shadow-xl transition-shadow duration-300"
+                className="bg-gradient-to-br from-white to-gray-50 hover:shadow-xl transition-shadow duration-300"
               />
             </motion.div>
           ))}
@@ -85,7 +73,7 @@ export default function HealthPoliciesPage() {
               title={policies[policies.length - 1].title}
               summary={policies[policies.length - 1].summary}
               fullContent={policies[policies.length - 1].fullContent}
-              className="bg-gradient-to-br from-white to-indigo-50 hover:shadow-xl transition-shadow duration-300"
+              className="bg-gradient-to-br from-white to-gray-50 hover:shadow-xl transition-shadow duration-300"
             />
           </motion.div>
         </div>
@@ -96,11 +84,11 @@ export default function HealthPoliciesPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <div className="bg-indigo-100 rounded-xl p-8 max-w-3xl mx-auto">
-            <h3 className="text-xl font-semibold text-indigo-900 mb-4">
+          <div className="bg-gray-100 rounded-xl p-8 max-w-3xl mx-auto">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">
               Moving Forward
             </h3>
-            <p className="text-indigo-700">
+            <p className="text-gray-600">
               As we move towards developing Indigenous healthcare legislation, it remains to be seen if the federal government will finally accept its responsibilities, listen to Indigenous healthcare leaders and activists, and address opportunities for change with commitment, instead of delay, negligence and court challenges.
             </p>
           </div>

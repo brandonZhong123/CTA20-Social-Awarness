@@ -22,6 +22,8 @@ export default function Home() {
     [0, 0.8],
     ["rgba(49, 46, 129, 0.6)", "rgba(255, 255, 255, 1)"]
   );
+  const textColor = useTransform(scrollYProgress, [0, 0.8], ["#ffffff", "#1e1b4b"]);
+  const subtextColor = useTransform(scrollYProgress, [0, 0.8], ["rgb(199, 210, 254)", "#4338ca"]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -30,6 +32,8 @@ export default function Home() {
         <motion.div
           className="absolute inset-0 w-full h-full"
           style={{ y }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
         >
           <div className="relative w-full h-full">
             {imageError && (
@@ -75,13 +79,13 @@ export default function Home() {
             >
               <motion.h1 
                 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
-                style={{ color: useTransform(scrollYProgress, [0, 0.8], ["#ffffff", "#1e1b4b"]) }}
+                style={{ color: textColor }}
               >
                 Equal Healthcare Access for All Indigenous Peoples
               </motion.h1>
               <motion.p 
                 className="text-xl md:text-2xl mb-8"
-                style={{ color: useTransform(scrollYProgress, [0, 0.8], ["rgb(199, 210, 254)", "#4338ca"]) }}
+                style={{ color: subtextColor }}
               >
                 Join our campaign to support Call to Action 20 and help ensure equitable healthcare access for Métis, Inuit, and off-reserve Indigenous peoples across Canada.
               </motion.p>
@@ -114,14 +118,9 @@ export default function Home() {
       {/* Key Statistics Section */}
       <section className="bg-white pt-40 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2 
-            className="text-3xl font-bold text-center mb-16 text-indigo-900"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-250px" }}
-          >
+          <h2 className="text-3xl font-bold text-center mb-16 text-indigo-900">
             The Current Reality
-          </motion.h2>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -230,32 +229,27 @@ export default function Home() {
       {/* Latest Updates Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2 
-            className="text-3xl font-bold mb-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <h2 className="text-3xl font-bold mb-12 text-center">
             Latest Updates
-          </motion.h2>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 type: "News",
-                title: "New Healthcare Policy Proposal",
-                description: "Recent developments in federal policy addressing Indigenous healthcare access...",
-                link: "/news/1"
+                title: "Major hospital redevelopment",
+                description: "The federal government committed $1.2 billion for rebuilding the Weeneebayko Area Health Authority (WAHA) hospital on Moose Factory Island and building supporting facilities in Moosonee.",
+                link: "https://www.canada.ca/en/indigenous-services-canada/news/2024/06/canada-announcing-funding-to-build-the-waha-hospital.html?utm_source=chatgpt.com"
               },
               {
-                type: "Community",
-                title: "Community Consultation Results",
-                description: "Findings from our recent community consultations on healthcare needs...",
+                type: "Province",
+                title: "Province-supported Indigenous navigators in emergency care",
+                description: "Sarnia-Lambton Ontario Health Team is investing $850,000 to hire two full-time Indigenous Navigators in Bluewater Health's emergency department, along with offering mobile care services to Walpole Island First Nation. The new roles start April 1, 2025, to support culturally aware care and continuity for Indigenous patients",
                 link: "/news/2"
               },
               {
-                type: "Success Story",
-                title: "Local Initiative Makes Impact",
-                description: "How one community's healthcare program is making a difference...",
+                type: "Reducation",
+                title: "Indigenous-led wound-care education",
+                description: "An eight-session Indigenous ECHO Canada Skin & Wound program launched in February 2025, offering virtual, culturally sensitive education to healthcare teams across Canada. It addresses chronic diabetes-related wounds with interactive case learning and mentorship. It began Feb 10 and runs through May 26, supporting Indigenous-led care in rural and remote regions",
                 link: "/news/3"
               }
             ].map((update, index) => (

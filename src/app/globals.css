@@ -26,6 +26,11 @@
     --radius: 0.75rem;
   }
 
+  /* Remove underline from motion elements */
+  .motion, motion-div, motion-h1, motion-h2, motion-p {
+    text-decoration: none !important;
+  }
+
   a {
     text-decoration: none !important;
     -webkit-tap-highlight-color: transparent;

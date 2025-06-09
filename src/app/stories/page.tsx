@@ -2,7 +2,6 @@
 
 import StoryCard from '@/components/StoryCard'
 import AnimatedCard from '@/components/AnimatedCard'
-import AnimatedHeading from '@/components/AnimatedHeading'
 import { motion } from 'framer-motion'
 import Link from 'next/link';
 
@@ -37,28 +36,16 @@ const stories = [
 
 export default function StoriesPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <AnimatedHeading 
-            text="Stories" 
-            className="text-4xl font-bold text-black mb-4"
-          />
-          <motion.p 
-            className="text-lg text-body max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            Real experiences from Indigenous peoples across Canada highlighting the importance of
-            equitable healthcare access and the impact of current disparities.
-          </motion.p>
-        </motion.div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            Stories of Impact
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Real experiences that highlight the urgent need for healthcare reform
+          </p>
+        </div>
 
         <div className="space-y-8">
           {stories.map((story, index) => (
@@ -75,19 +62,12 @@ export default function StoriesPage() {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          <AnimatedHeading 
-            text="Share Your Story" 
-            className="text-2xl font-semibold text-black mb-4"
-          />
-          <motion.p 
-            className="text-body mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-          >
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Share Your Story
+          </h2>
+          <p className="text-body mb-6">
             Your experience matters. Help us advocate for change by sharing your healthcare story.
-          </motion.p>
+          </p>
           <Link href="/share-story">
             <motion.div
               className="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
@@ -106,10 +86,9 @@ export default function StoriesPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <AnimatedHeading 
-            text="Why Stories Matter" 
-            className="text-2xl font-semibold text-black mb-4"
-          />
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Why Stories Matter
+          </h2>
           <div className="grid grid-cols-1 gap-6">
             {[
               {
@@ -127,7 +106,7 @@ export default function StoriesPage() {
             ].map((item, index) => (
               <AnimatedCard key={item.title} delay={index * 0.2}>
                 <div className="h-full p-6 bg-gray-50 rounded-lg">
-                  <h3 className="text-lg font-medium text-black mb-2">{item.title}</h3>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">{item.title}</h3>
                   <p className="text-body">{item.description}</p>
                 </div>
               </AnimatedCard>

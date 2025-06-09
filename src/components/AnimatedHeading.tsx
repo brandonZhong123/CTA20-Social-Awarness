@@ -52,16 +52,10 @@ export default function AnimatedHeading({ text, className = '' }: AnimatedHeadin
       {words.map((word, index) => (
         <motion.span
           key={index}
-          className="inline-block mr-2 relative"
+          className="inline-block mr-2"
           variants={child}
         >
           {word}
-          <motion.span
-            className="absolute bottom-0 left-0 w-full h-[2px] bg-indigo-500 origin-left"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-          />
         </motion.span>
       ))}
     </motion.div>

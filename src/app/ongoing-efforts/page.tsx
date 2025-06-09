@@ -1,8 +1,7 @@
 'use client';
 
-import AnimatedHeading from '@/components/AnimatedHeading';
-import ExpandableCard from '@/components/ExpandableCard';
 import { motion } from 'framer-motion';
+import ExpandableCard from '@/components/ExpandableCard';
 
 const efforts = [
   {
@@ -29,28 +28,16 @@ const efforts = [
 
 export default function OngoingEffortsPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <AnimatedHeading 
-            text="Ongoing Efforts" 
-            className="text-4xl font-bold text-gray-900 mb-4"
-          />
-          <motion.p 
-            className="text-lg text-gray-600 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            Current initiatives and policies aimed at addressing healthcare disparities 
-            and improving access to quality healthcare for Indigenous peoples in Canada.
-          </motion.p>
-        </motion.div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            Ongoing Efforts
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Current initiatives and progress in Indigenous healthcare reform
+          </p>
+        </div>
 
         <div className="space-y-6">
           {efforts.map((effort, index) => (

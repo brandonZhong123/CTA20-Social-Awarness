@@ -3,7 +3,6 @@
 import CircularProgress from '@/components/CircularProgress';
 import { motion } from 'framer-motion';
 import AnimatedCard from '@/components/AnimatedCard';
-import AnimatedHeading from '@/components/AnimatedHeading';
 
 export default function AboutPage() {
   const travelStats = [
@@ -23,28 +22,16 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white py-12">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <AnimatedHeading 
-            text="Understanding the Crisis" 
-            className="text-4xl font-bold text-gray-900 mb-4"
-          />
-          <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            Indigenous peoples in Canada continue to face significant health disparities compared to non-Indigenous populations, 
-            made worse by limited access to quality healthcare and systemic barriers.
-          </motion.p>
-        </motion.div>
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            About Call to Action 20
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Understanding the importance of equitable healthcare access for Indigenous peoples
+          </p>
+        </div>
 
         {/* Key Issues Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
@@ -135,10 +122,9 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <AnimatedHeading 
-            text="Healthcare Discrimination" 
-            className="text-2xl font-bold text-gray-900 mb-8 text-center"
-          />
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+            Healthcare Discrimination
+          </h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {discriminationStats.map((stat, index) => (
               <motion.div 
@@ -180,10 +166,9 @@ export default function AboutPage() {
 
         {/* Impact Section */}
         <div className="prose prose-lg mx-auto">
-          <AnimatedHeading 
-            text="Systemic Impact" 
-            className="text-2xl font-bold text-gray-900 mb-4"
-          />
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Systemic Impact
+          </h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
