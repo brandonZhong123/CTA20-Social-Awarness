@@ -1,7 +1,8 @@
 'use client';
 
-import CircularProgress from '@/components/CircularProgress';
+import AnimatedHeading from '@/components/AnimatedHeading';
 import { motion } from 'framer-motion';
+import CircularProgress from '@/components/CircularProgress';
 import AnimatedCard from '@/components/AnimatedCard';
 
 export default function AboutPage() {
@@ -23,14 +24,53 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            About Call to Action 20
-          </h1>
+          <AnimatedHeading 
+            text="About Call to Action 20" 
+            className="text-5xl font-bold text-gray-900 mb-6"
+          />
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Understanding the importance of equitable healthcare access for Indigenous peoples
           </p>
+        </div>
+
+        <div className="space-y-12">
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8"
+          >
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h2>
+            <p className="text-gray-600">
+              Call to Action 20 advocates for the recognition of Indigenous peoples' health-care rights and the implementation of these rights in collaboration with Indigenous peoples. We work to ensure that the Canadian healthcare system acknowledges, respects, and incorporates Indigenous healing practices alongside Western medicine.
+            </p>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8"
+          >
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Why It Matters</h2>
+            <p className="text-gray-600">
+              Indigenous peoples in Canada continue to face significant barriers in accessing culturally appropriate healthcare services. These disparities have deep historical roots and continue to impact health outcomes today. By supporting Call to Action 20, we can work together to create a more equitable and inclusive healthcare system.
+            </p>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8"
+          >
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Get Involved</h2>
+            <p className="text-gray-600">
+              Your support can make a difference. Whether through advocacy, education, or direct action, there are many ways to contribute to the implementation of Call to Action 20. Join us in working towards a healthcare system that truly serves all communities.
+            </p>
+          </motion.section>
         </div>
 
         {/* Key Issues Section */}

@@ -1,5 +1,6 @@
 'use client';
 
+import AnimatedHeading from '@/components/AnimatedHeading';
 import StoryCard from '@/components/StoryCard'
 import AnimatedCard from '@/components/AnimatedCard'
 import { motion } from 'framer-motion'
@@ -39,9 +40,10 @@ export default function StoriesPage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Stories of Impact
-          </h1>
+          <AnimatedHeading 
+            text="Stories of Impact" 
+            className="text-5xl font-bold text-gray-900 mb-6"
+          />
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Real experiences that highlight the urgent need for healthcare reform
           </p>
@@ -49,9 +51,22 @@ export default function StoriesPage() {
 
         <div className="space-y-8">
           {stories.map((story, index) => (
-            <AnimatedCard key={story.name} delay={index * 0.2}>
-              <StoryCard {...story} />
-            </AnimatedCard>
+            <motion.div
+              key={story.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <StoryCard
+                name={story.name}
+                story={story.story}
+                community={story.community}
+                location={story.location}
+                date={story.date}
+                image={story.image}
+                readMoreLink={story.readMoreLink}
+              />
+            </motion.div>
           ))}
         </div>
 

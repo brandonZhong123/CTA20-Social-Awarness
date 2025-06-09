@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import AnimatedHeading from '@/components/AnimatedHeading';
 import ExpandableCard from '@/components/ExpandableCard';
+import { motion } from 'framer-motion';
 
 const efforts = [
   {
@@ -29,17 +30,18 @@ const efforts = [
 export default function OngoingEffortsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-12 sm:px-16 lg:px-24">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Ongoing Efforts
-          </h1>
+          <AnimatedHeading 
+            text="Ongoing Efforts" 
+            className="text-5xl font-bold text-gray-900 mb-6"
+          />
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Current initiatives and progress in Indigenous healthcare reform
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 px-8">
           {efforts.map((effort, index) => (
             <motion.div
               key={effort.title}
@@ -51,6 +53,7 @@ export default function OngoingEffortsPage() {
                 title={effort.title}
                 summary={effort.summary}
                 fullContent={effort.fullContent}
+                className="bg-gradient-to-br from-white to-gray-50 hover:shadow-xl transition-shadow duration-300"
               />
             </motion.div>
           ))}
