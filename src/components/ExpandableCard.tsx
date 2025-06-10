@@ -27,14 +27,14 @@ export default function ExpandableCard({ title, summary, fullContent, className 
         whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.02)' }}
       >
         <div className="flex justify-between items-start gap-4">
-          <h3 className="text-xl font-semibold text-indigo-900 mb-3">{title}</h3>
+          <h3 className="text-xl font-semibold text-black mb-3">{title}</h3>
           <motion.button
-            className="p-2 rounded-full hover:bg-indigo-100 flex-shrink-0"
+            className="p-2 rounded-full hover:bg-white flex-shrink-0"
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.3 }}
           >
             <svg
-              className="w-5 h-5 text-indigo-600"
+              className="w-5 h-5 text-gray-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -48,7 +48,7 @@ export default function ExpandableCard({ title, summary, fullContent, className 
             </svg>
           </motion.button>
         </div>
-        <p className="text-indigo-700/80">{summary}</p>
+        <p className="text-gray-600">{summary}</p>
       </motion.div>
 
       <AnimatePresence>
@@ -65,8 +65,8 @@ export default function ExpandableCard({ title, summary, fullContent, className 
               animate={{ y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="border-t border-indigo-100 pt-4 mt-2">
-                <p className="text-indigo-900/80 leading-relaxed">{fullContent}</p>
+              <div className="border-t border-black-100 pt-4 mt-2">
+                <p className="text-gray-600 leading-relaxed">{fullContent}</p>
               </div>
             </motion.div>
           </motion.div>

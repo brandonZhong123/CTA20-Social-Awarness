@@ -37,7 +37,7 @@ export default function Home() {
         >
           <div className="relative w-full h-full">
             {imageError && (
-              <div className="absolute inset-0 flex items-center justify-center text-red-500 bg-indigo-50/50 z-10">
+              <div className="absolute inset-0 flex items-center justify-center text-red-500 bg-blue-50/50 z-10">
                 Error loading image: {imageError}
               </div>
             )}
@@ -93,7 +93,7 @@ export default function Home() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link 
                     href="/take-action"
-                    className="inline-block bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 transition-colors"
+                    className="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors"
                   >
                     Take Action Now
                   </Link>
@@ -101,7 +101,7 @@ export default function Home() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     href="/about"
-                    className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-900 transition-colors"
+                    className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-900 transition-colors"
                   >
                     Learn More
                   </Link>
@@ -118,7 +118,7 @@ export default function Home() {
       {/* Key Statistics Section */}
       <section className="bg-white pt-40 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-16 text-indigo-900">
+          <h2 className="text-3xl font-bold text-center mb-16 text-blue-900">
             The Current Reality
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -139,7 +139,7 @@ export default function Home() {
               <AnimatedCard key={index} delay={index * 0.2}>
                 <div className="text-center p-6 bg-gray-50 rounded-lg h-full">
                   <div className="flex justify-center mb-4">
-                    <CircularProgress percentage={stat.percentage} color="#4F46E5" />
+                    <CircularProgress percentage={stat.percentage} color="#3B82F6" />
                   </div>
                   <p className="text-gray-600">{stat.text}</p>
                 </div>
@@ -150,7 +150,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-16 bg-indigo-50">
+      <section className="py-16 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -190,7 +190,7 @@ export default function Home() {
                       type="text"
                       id="name"
                       name="name"
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
                   <div>
@@ -199,7 +199,7 @@ export default function Home() {
                       type="email"
                       id="email"
                       name="email"
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
                   <div>
@@ -208,12 +208,12 @@ export default function Home() {
                       type="text"
                       id="postal-code"
                       name="postal-code"
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
                   <motion.button
                     type="submit"
-                    className="w-full bg-indigo-600 text-white px-6 py-3 rounded-md font-medium hover:bg-indigo-700 transition-colors"
+                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition-colors"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

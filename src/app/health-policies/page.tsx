@@ -2,6 +2,8 @@
 
 import ExpandableCard from '@/components/ExpandableCard';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useState } from 'react';
 
 const policies = [
   {
@@ -32,16 +34,45 @@ const policies = [
 ];
 
 export default function HealthPoliciesPage() {
+  const [imageError, setImageError] = useState<string | null>(null);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Health Policies
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium mb-8">
-            Understanding the complex history and current state of Indigenous healthcare policies in Canada
-          </p>
+        <div className="mb-16">
+          <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="md:w-1/2 text-center md:text-left">
+              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+                Health Policies
+              </h1>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto md:mx-0 font-medium">
+                Understanding the complex history and current state of Indigenous healthcare policies in Canada
+              </p>
+            </div>
+            <div className="md:w-1/2 relative h-[300px] rounded-lg overflow-hidden bg-blue-50">
+              {imageError ? (
+                <div className="absolute inset-0 flex items-center justify-center text-red-500">
+                  Error loading image: {imageError}
+                </div>
+              ) : (
+                <Image
+                  src="/health1.png"
+                  alt="Healthcare Background"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                  onError={() => {
+                    console.error('Error loading health1.png');
+                    setImageError('Failed to load image');
+                  }}
+                  onLoad={() => {
+                    console.log('health1.png loaded successfully');
+                    setImageError(null);
+                  }}
+                />
+              )}
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

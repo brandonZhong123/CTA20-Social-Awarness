@@ -4,6 +4,7 @@ import AnimatedHeading from '@/components/AnimatedHeading';
 import { motion } from 'framer-motion';
 import CircularProgress from '@/components/CircularProgress';
 import AnimatedCard from '@/components/AnimatedCard';
+import Image from 'next/image';
 
 export default function AboutPage() {
   const travelStats = [
@@ -42,10 +43,23 @@ export default function AboutPage() {
             transition={{ delay: 0.2 }}
             className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8"
           >
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h2>
-            <p className="text-gray-600">
-              Call to Action 20 advocates for the recognition of Indigenous peoples' health-care rights and the implementation of these rights in collaboration with Indigenous peoples. We work to ensure that the Canadian healthcare system acknowledges, respects, and incorporates Indigenous healing practices alongside Western medicine.
-            </p>
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <div className="md:w-1/2">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h2>
+                <p className="text-gray-600">
+                  Call to Action 20 advocates for the recognition of Indigenous peoples' health-care rights and the implementation of these rights in collaboration with Indigenous peoples. We work to ensure that the Canadian healthcare system acknowledges, respects, and incorporates Indigenous healing practices alongside Western medicine.
+                </p>
+              </div>
+              <div className="md:w-1/2 relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="/doctor-paitent.jpg"
+                  alt="Indigenous healthcare consultation"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
           </motion.section>
 
           <motion.section
