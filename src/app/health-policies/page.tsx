@@ -48,42 +48,65 @@ export default function HealthPoliciesPage() {
           </p>
         </div>
 
-        <div className="relative flex flex-col lg:flex-row gap-8 items-start">
-          {/* Central Image */}
-          <div className="lg:w-1/3">
-            <div className="w-full h-[300px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg">
-              {imageError ? (
-                <div className="absolute inset-0 flex items-center justify-center text-red-500 bg-blue-50">
-                  Error loading image: {imageError}
-                </div>
-              ) : (
-                <Image
-                  src="/health1.png"
-                  alt="Healthcare Background"
-                  fill
-                  className="object-cover object-center"
-                  priority
-                  onError={() => {
-                    console.error('Error loading health1.png');
-                    setImageError('Failed to load image');
-                  }}
-                  onLoad={() => {
-                    console.log('health1.png loaded successfully');
-                    setImageError(null);
-                  }}
-                />
-              )}
+        <div className="flex flex-col gap-8">
+          {/* Top Row - Image + 3 Cards */}
+          <div className="relative flex flex-col lg:flex-row gap-8">
+            {/* Image */}
+            <div className="lg:w-1/4 shrink-0">
+              <div className="relative w-full h-[300px] lg:h-[400px] rounded-2xl overflow-hidden shadow-lg">
+                {imageError ? (
+                  <div className="absolute inset-0 flex items-center justify-center text-red-500 bg-blue-50">
+                    Error loading image: {imageError}
+                  </div>
+                ) : (
+                  <Image
+                    src="/health1.png"
+                    alt="Healthcare Background"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover object-center"
+                    priority
+                    onError={() => {
+                      console.error('Error loading health1.png');
+                      setImageError('Failed to load image');
+                    }}
+                    onLoad={() => {
+                      console.log('health1.png loaded successfully');
+                      setImageError(null);
+                    }}
+                  />
+                )}
+              </div>
+            </div>
+
+            {/* First 3 Cards */}
+            <div className="lg:w-3/4 flex flex-col gap-4">
+              {policies.slice(0, 3).map((policy, index) => (
+                <motion.div
+                  key={policy.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <ExpandableCard
+                    title={policy.title}
+                    summary={policy.summary}
+                    fullContent={policy.fullContent}
+                    className="bg-gradient-to-br from-white to-gray-50 hover:shadow-xl transition-shadow duration-300"
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
 
-          {/* Cards Grid */}
-          <div className="lg:w-2/3 space-y-6">
-            {policies.map((policy, index) => (
+          {/* Bottom Row - 2 Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {policies.slice(3).map((policy, index) => (
               <motion.div
                 key={policy.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: (index + 3) * 0.1 }}
               >
                 <ExpandableCard
                   title={policy.title}
@@ -102,7 +125,7 @@ export default function HealthPoliciesPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <div className="bg-gray-100 rounded-xl p-8 max-w-3xl mx-auto">
+          <div className="bg-gray-100 rounded-xl p-8">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">
               Moving Forward
             </h3>
