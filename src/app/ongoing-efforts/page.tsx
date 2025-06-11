@@ -26,14 +26,14 @@ const efforts: Effort[] = [
     fullContent: "The First Nations Health Authority (FNHA) is the first province-wide health authority of its kind in Canada. In 2013, the FNHA assumed the programs, services, and responsibilities formerly handled by Health Canada's First Nations Inuit Health Branch – Pacific Region. The FNHA works to reform the way health care is delivered to BC First Nations through direct services and collaboration with provincial partners. They are driven by the vision of embedding cultural safety and humility into health service delivery, and work to address systemic racism and discrimination in health care."
   },
   {
-    title: "Indigenous Health Action Plan",
-    summary: "A comprehensive strategy to improve health outcomes and experiences for Indigenous peoples in the healthcare system.",
-    fullContent: "The Indigenous Health Action Plan represents a commitment to advance Indigenous health and wellness through concrete actions and systemic change. Key focus areas include: improving cultural safety and humility in health services, increasing Indigenous representation in healthcare professions, establishing Indigenous-led primary care centers, and developing Indigenous healing programs that integrate traditional practices with western medicine. The plan was developed in partnership with Indigenous communities, leaders, and healthcare providers to ensure it reflects Indigenous perspectives and priorities."
+    title: "National Council for Reconciliation",
+    summary: "Established through Bill C-29 to monitor and report on reconciliation efforts, including health-related initiatives.",
+    fullContent: "The National Council for Reconciliation, established through Bill C-29, plays a crucial role in monitoring and reporting on the progress of reconciliation efforts, with a specific focus on health-related initiatives. The council ensures accountability and transparency in implementing the Truth and Reconciliation Commission's Calls to Action. Their work includes tracking improvements in Indigenous healthcare access, cultural safety in healthcare settings, and the integration of traditional healing practices. This oversight helps maintain momentum in addressing systemic barriers and promoting equitable healthcare for Indigenous peoples."
   },
   {
-    title: "Cultural Safety Training Programs",
-    summary: "Mandatory training for healthcare providers to deliver culturally safe and appropriate care to Indigenous patients.",
-    fullContent: "Cultural safety training programs are being implemented across healthcare institutions to address systemic racism and discrimination. These programs help healthcare providers understand the historical context of Indigenous health inequities, recognize their own biases, and develop skills to provide culturally safe care. The training includes learning about Indigenous perspectives on health and wellness, the impacts of colonization and intergenerational trauma, and practical strategies for creating welcoming and respectful healthcare environments. Many programs are developed and delivered in partnership with Indigenous educators and knowledge keepers."
+    title: "Health Program Development",
+    summary: "Community-driven healthcare initiatives that integrate traditional healing and culturally safe practices to promote holistic Indigenous well-being.",
+    fullContent: "Indigenous communities manage health initiatives that integrate traditional healing methods with contemporary strategies to meet particular needs and enhance comprehensive health results. These efforts aim to address intergenerational trauma stemming from residential schools and enhance access to culturally suitable healthcare, mental health services, and long-term care. Initiatives such as Carrier Sekani Family Services’ community training and Indigenous language revitalization efforts enhance cultural safety through the promotion of respect and understanding. Backed by more than $6.2 billion in funding from Indigenous Services Canada for 2024-25, these programs promote the health and cultural welfare of Indigenous communities",
   }
 ];
 

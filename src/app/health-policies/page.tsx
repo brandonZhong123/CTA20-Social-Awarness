@@ -37,21 +37,23 @@ export default function HealthPoliciesPage() {
   const [imageError, setImageError] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-16">
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="md:w-1/2 text-center md:text-left">
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                Health Policies
-              </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto md:mx-0 font-medium">
-                Understanding the complex history and current state of Indigenous healthcare policies in Canada
-              </p>
-            </div>
-            <div className="md:w-1/2 relative h-[300px] rounded-lg overflow-hidden bg-blue-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+            Health Policies
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+            Understanding the complex history and current state of Indigenous healthcare policies in Canada
+          </p>
+        </div>
+
+        <div className="relative flex flex-col lg:flex-row gap-8 items-start">
+          {/* Central Image */}
+          <div className="lg:w-1/3">
+            <div className="w-full h-[300px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg">
               {imageError ? (
-                <div className="absolute inset-0 flex items-center justify-center text-red-500">
+                <div className="absolute inset-0 flex items-center justify-center text-red-500 bg-blue-50">
                   Error loading image: {imageError}
                 </div>
               ) : (
@@ -73,44 +75,29 @@ export default function HealthPoliciesPage() {
               )}
             </div>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {policies.slice(0, -1).map((policy, index) => (
-            <motion.div
-              key={policy.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="lg:even:translate-y-12"
-            >
-              <ExpandableCard
-                title={policy.title}
-                summary={policy.summary}
-                fullContent={policy.fullContent}
-                className="bg-gradient-to-br from-white to-gray-50 hover:shadow-xl transition-shadow duration-300"
-              />
-            </motion.div>
-          ))}
-          {/* Last card centered */}
-          <motion.div
-            key={policies[policies.length - 1].title}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: (policies.length - 1) * 0.1 }}
-            className="lg:col-span-2 lg:w-1/2 lg:mx-auto"
-          >
-            <ExpandableCard
-              title={policies[policies.length - 1].title}
-              summary={policies[policies.length - 1].summary}
-              fullContent={policies[policies.length - 1].fullContent}
-              className="bg-gradient-to-br from-white to-gray-50 hover:shadow-xl transition-shadow duration-300"
-            />
-          </motion.div>
+          {/* Cards Grid */}
+          <div className="lg:w-2/3 space-y-6">
+            {policies.map((policy, index) => (
+              <motion.div
+                key={policy.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <ExpandableCard
+                  title={policy.title}
+                  summary={policy.summary}
+                  fullContent={policy.fullContent}
+                  className="bg-gradient-to-br from-white to-gray-50 hover:shadow-xl transition-shadow duration-300"
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <motion.div
-          className="mt-20 text-center"
+          className="mt-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
