@@ -17,7 +17,7 @@ const efforts: Effort[] = [
   {
     title: "Jordan's Principle",
     summary: "A child-first principle ensuring First Nations children can access public services on the same terms as other children.",
-    fullContent: "Jordan's Principle makes sure all First Nations children living in Canada can access the products, services and supports they need, when they need them. It can help with a wide range of health, social and educational needs. Jordan's Principle is named in memory of Jordan River Anderson, a First Nations child from Norway House Cree Nation in Manitoba. Born with complex medical needs, Jordan spent more than two years unnecessarily in hospital while the Province of Manitoba and the federal government argued over who should pay for his at-home care. Jordan died in the hospital at the age of five years old, never having spent a day in his family home.",
+    fullContent: "Jordan's Principle ensures all First Nations children living in Canada can gain equitable access to products, services and supports required to sustain sufficient quality of life. These services assist with a wide range of health, social and educational needs. Jordan's Principle is named in memory of Jordan River Anderson, a First Nations child from Norway House Cree Nation in Manitoba. Born with complex medical needs, Jordan spent more than two years unnecessarily in a Manitoba hospital while the Province of Manitoba and the federal government argued over who should pay for his at-home care. Jordan died in the hospital at the age of five years old, never having spent a day in his family's home.",
     imageSrc: "/jordan.png"
   },
   {

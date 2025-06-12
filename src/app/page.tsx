@@ -244,13 +244,13 @@ export default function Home() {
                 type: "Province",
                 title: "Province-supported Indigenous navigators in emergency care",
                 description: "Sarnia-Lambton Ontario Health Team is investing $850,000 to hire two full-time Indigenous Navigators in Bluewater Health's emergency department, along with offering mobile care services to Walpole Island First Nation. The new roles start April 1, 2025, to support culturally aware care and continuity for Indigenous patients",
-                link: "/news/2"
+                link: "https://www.sarnialambtonoht.ca/2025/03/19/sarnia-lambton-ontario-health-team-and-indigenous-partners-announce-850000-investment-to-improve-local-indigenous-healthcare/"
               },
               {
                 type: "Reducation",
                 title: "Indigenous-led wound-care education",
                 description: "An eight-session Indigenous ECHO Canada Skin & Wound program launched in February 2025, offering virtual, culturally sensitive education to healthcare teams across Canada. It addresses chronic diabetes-related wounds with interactive case learning and mentorship. It began Feb 10 and runs through May 26, supporting Indigenous-led care in rural and remote regions",
-                link: "/news/3"
+                link: "https://hospitalnews.com/indigenous-echo-canada-skin-and-wound-care/"
               }
             ].map((update, index) => (
               <AnimatedCard key={index} delay={index * 0.2}>
